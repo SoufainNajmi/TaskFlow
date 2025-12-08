@@ -42,3 +42,24 @@ CREATE TABLE `users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Données pour la table `categories`
+INSERT INTO `categories` (`name`, `color`) VALUES
+('Travail', '#2196F3'),
+('Personnel', '#4CAF50'),
+('Études', '#FF9800'),
+('Maison', '#9C27B0'),
+('Loisirs', '#00BCD4');
+
+-- Données pour la table `tasks`
+INSERT INTO `tasks` (`title`, `description`, `priority`, `done`) VALUES
+('Apprendre PHP OOP', 'Comprendre les concepts de la programmation orientée objet en PHP : classes, objets, héritage, encapsulation, polymorphisme', 'high', 0),
+('Implémenter le pattern MVC', 'Créer une architecture Model-View-Controller pour séparer la logique métier de la présentation', 'high', 1),
+('Créer un système de connexion', 'Développer une authentification sécurisée avec hachage de mots de passe et sessions', 'medium', 0),
+('Designer l\'interface', 'Utiliser Bootstrap ou Tailwind CSS pour créer une interface utilisateur responsive et moderne', 'medium', 0),
+('Tester les fonctionnalités', 'Écrire des tests unitaires pour vérifier le bon fonctionnement de toutes les fonctionnalités', 'medium', 0),
+('Documenter le code', 'Ajouter des commentaires PHPDoc et créer un README détaillé pour le projet', 'low', 1),
+('Déployer l\'application', 'Configurer un serveur web (Apache/Nginx) et déployer l\'application en production', 'high', 0),
+('Optimiser les performances', 'Améliorer les requêtes SQL et optimiser le code PHP pour de meilleures performances', 'low', 0);
+
+SET FOREIGN_KEY_CHECKS = 1;
