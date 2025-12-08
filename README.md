@@ -36,26 +36,25 @@ Ce projet est parfait pour apprendre :
 ---
 
 ## 🏗️ Architecture du projet (MVC)
-
 ```
-/app
-    /Controllers
-        TaskController.php
-        UserController.php (optionnel)
-    /Models
-        Task.php
-        TaskModel.php
-        User.php (optionnel)
-    /Views
-        task-list.php
-        task-add.php
-        task-edit.php
-/config
-    database.php
-/public
-    index.php
-    assets/
-vendor/
+TaskFlow/
+├── app/
+│   ├── Controllers/
+│   │   └── TaskController.php
+│   ├── Models/
+│   │   ├── Task.php
+│   │   └── TaskModel.php
+│   └── Views/
+│       ├── layout.php
+│       ├── task-form.php
+│       └── task-list.php
+├── config/
+│   └── database.php
+├── public/
+│   ├── assets/
+│   └── index.php
+├── database.sql
+└── README.md
 ```
 
 ## 🔧 Installation & exécution
