@@ -1,21 +1,34 @@
 <?php
-class Database {
-    private static $connexion = null;
 
-    public static function getConnexion() {
-        if (self::$connexion === null) {
-            try {
-                self::$connexion = new PDO(
-                    "mysql:host=localhost;dbname=Taskflow;charset=utf8",
-                    "root",
-                    ""
-                );
-                self::$connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die("Erreur DB : " . $e->getMessage());
-            }
+class Database {
+    private static $instance = null;
+    private $connection;
+    
+    private function __construct() {
+        try {
+            $this->connection = new PDO(
+                'mysql:host=localhost;dbname=taskflow;charset=utf8',
+                'root',
+                '',
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
+            );
+        } catch (PDOException $e) {
+            die('Erreur de connexion : ' . $e->getMessage());
         }
-        return self::$connexion;
+    }
+    
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+    
+    public function getConnection() {
+        return $this->connection;
     }
 }
 ?>
