@@ -7,7 +7,7 @@ class TaskModel {
     private $db;
     
     public function __construct() {
-        $database = \Database::getConnexion();
+        $database = \Database::getInstance();
         $this->db = $database->getConnection();
     }
 }
