@@ -31,6 +31,13 @@ class TaskModel {
         }
         return $tasks;
     }
+    public function findById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM tasks WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $data = $stmt->fetch();
+        
+        return $data ? new Task($data) : null;
+    }
     
 }
 ?>
