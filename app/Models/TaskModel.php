@@ -38,6 +38,13 @@ class TaskModel {
         
         return $data ? new Task($data) : null;
     }
+    public function save(Task $task) {
+        if ($task->getId()) {
+            return $this->update($task);
+        } else {
+            return $this->create($task);
+        }
+    }
     
 }
 ?>
