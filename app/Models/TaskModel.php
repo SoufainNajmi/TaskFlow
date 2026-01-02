@@ -45,6 +45,20 @@ class TaskModel {
             return $this->create($task);
         }
     }
+    private function create(Task $task) {
+        $sql = "INSERT INTO tasks (title, description, priority, done) 
+                VALUES (:title, :description, :priority, :done)";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':title' => $task->getTitle(),
+            ':description' => $task->getDescription(),
+            ':priority' => $task->getPriority(),
+            ':done' => $task->isDone() ? 1 : 0
+        ]);
+        
+        return $this->db->lastInsertId();
+    }
     
 }
 ?>
