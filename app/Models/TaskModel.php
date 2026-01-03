@@ -59,6 +59,23 @@ class TaskModel {
         
         return $this->db->lastInsertId();
     }
+    private function update(Task $task) {
+        $sql = "UPDATE tasks SET 
+                title = :title,
+                description = :description,
+                priority = :priority,
+                done = :done
+                WHERE id = :id";
+        
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':title' => $task->getTitle(),
+            ':description' => $task->getDescription(),
+            ':priority' => $task->getPriority(),
+            ':done' => $task->isDone() ? 1 : 0,
+            ':id' => $task->getId()
+        ]);
+    }
     
 }
 ?>
