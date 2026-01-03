@@ -87,6 +87,22 @@ class TaskModel {
             return $this->save($task);
         }
         return false;
+    }   
+     
+     public function search($keyword) {
+        $sql = "SELECT * FROM tasks 
+                WHERE title LIKE :keyword 
+                OR description LIKE :keyword
+                ORDER BY created_at DESC";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':keyword' => "%$keyword%"]);
+        
+        $tasks = [];
+        while ($row = $stmt->fetch()) {
+            $tasks[] = new Task($row);
+        }
+        return $tasks;
     }
     
     
