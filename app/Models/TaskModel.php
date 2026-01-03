@@ -76,6 +76,11 @@ class TaskModel {
             ':id' => $task->getId()
         ]);
     }
+      public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM tasks WHERE id = :id");
+        return $stmt->execute([':id' => $id]);
+    }
+    
     
 }
 ?>
