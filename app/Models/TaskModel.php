@@ -80,6 +80,14 @@ class TaskModel {
         $stmt = $this->db->prepare("DELETE FROM tasks WHERE id = :id");
         return $stmt->execute([':id' => $id]);
     }
+    public function toggleStatus($id) {
+        $task = $this->findById($id);
+        if ($task) {
+            $task->setDone(!$task->isDone());
+            return $this->save($task);
+        }
+        return false;
+    }
     
     
 }
