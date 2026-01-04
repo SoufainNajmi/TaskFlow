@@ -228,3 +228,30 @@ select.form-control {
         justify-content: center;
     }
 }
+
+/* Styles inline additionnels */
+.char-counter {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-top: 0.25rem;
+}
+
+.readonly-field {
+    padding: 0.875rem 1rem;
+    background-color: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    color: #666;
+}
+
+.form-control.error {
+    border-color: #e74c3c;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
